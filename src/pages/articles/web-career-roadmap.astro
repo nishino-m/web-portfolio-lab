@@ -1,0 +1,355 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleJsonLd from "../../components/ArticleJsonLd.astro";
+import CTABox from "../../components/CTABox.astro";
+import { getArticleBySlug } from "../../data/articles";
+
+const article = getArticleBySlug("web-career-roadmap");
+
+if (!article) {
+  throw new Error("Article not found: web-career-roadmap");
+}
+---
+
+<BaseLayout
+  title={`${article.title} | Web転職ポートフォリオ研究所`}
+  description={article.description}
+  path={article.href}
+  type="article"
+  image={article.image}
+>
+  <ArticleJsonLd article={article} />
+
+  <main id="main-content">
+    <article class="article-page">
+      <a class="breadcrumb" href="/articles">← 記事一覧へ戻る</a>
+
+      <header class="article-header">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          {article.tag}
+        </span>
+
+        <h1>{article.title}</h1>
+
+        <div class="article-meta">
+          <span>公開日：2026年5月12日</span>
+          <span>更新日：2026年5月12日</span>
+          <span>{article.readingTime}</span>
+        </div>
+      </header>
+
+      <div class="article-body card">
+        <p>
+          未経験や実務経験が浅い状態からWeb系エンジニアを目指す場合、
+          やることが多くて迷いやすいです。
+        </p>
+
+        <ul>
+          <li>何から勉強すればいいのか</li>
+          <li>どんなポートフォリオを作ればいいのか</li>
+          <li>いつ応募すればいいのか</li>
+          <li>面接で何を話せばいいのか</li>
+        </ul>
+
+        <p>
+          この記事では、Web系転職を目指す人向けに、
+          <strong>学習から応募までの流れ</strong>
+          を整理します。
+        </p>
+
+        <h2>STEP1：HTML / CSS / JavaScriptを学ぶ</h2>
+
+        <p>
+          まずはWebの基礎です。
+          特にJavaScriptは重要です。
+        </p>
+
+        <p>
+          最低限、以下は理解しておきましょう。
+        </p>
+
+        <ul>
+          <li>変数</li>
+          <li>関数</li>
+          <li>条件分岐</li>
+          <li>配列</li>
+          <li>オブジェクト</li>
+          <li>DOM操作</li>
+          <li>非同期処理</li>
+          <li>fetch</li>
+        </ul>
+
+        <p>
+          ここが曖昧なままReactに進むと、あとで詰まりやすいです。
+        </p>
+
+        <h2>STEP2：ReactとTypeScriptを学ぶ</h2>
+
+        <p>
+          次にReactを学びます。
+        </p>
+
+        <p>
+          最低限、以下は押さえたいです。
+        </p>
+
+        <ul>
+          <li>コンポーネント</li>
+          <li>props</li>
+          <li>state</li>
+          <li>useEffect</li>
+          <li>イベント処理</li>
+          <li>フォーム</li>
+          <li>ルーティング</li>
+          <li>API通信</li>
+        </ul>
+
+        <p>
+          TypeScriptでは、以下を理解しましょう。
+        </p>
+
+        <ul>
+          <li>型注釈</li>
+          <li>interface</li>
+          <li>type</li>
+          <li>配列の型</li>
+          <li>オブジェクトの型</li>
+          <li>APIレスポンスの型</li>
+        </ul>
+
+        <p>
+          完璧でなくても大丈夫です。
+          ただし、自分で小さな画面を作れる状態にはしておきたいです。
+        </p>
+
+        <h2>STEP3：バックエンドとDBを学ぶ</h2>
+
+        <p>
+          Web系転職では、フロントだけでなくAPIやDBの理解もあると強いです。
+        </p>
+
+        <p>
+          おすすめは以下です。
+        </p>
+
+        <ul>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>Prisma</li>
+          <li>PostgreSQL または MySQL</li>
+        </ul>
+
+        <p>
+          最低限、以下を作れるようにしましょう。
+        </p>
+
+        <ul>
+          <li>一覧取得API</li>
+          <li>詳細取得API</li>
+          <li>作成API</li>
+          <li>更新API</li>
+          <li>削除API</li>
+          <li>ログインAPI</li>
+        </ul>
+
+        <p>
+          このあたりができると、ポートフォリオの幅がかなり広がります。
+        </p>
+
+        <h2>STEP4：ポートフォリオを作る</h2>
+
+        <p>
+          学習だけで終わらず、必ず1つWebアプリを完成させましょう。
+        </p>
+
+        <p>
+          おすすめは、
+          <strong>ログイン機能付きの投稿系アプリ</strong>
+          です。
+        </p>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>投稿</li>
+          <li>編集</li>
+          <li>削除</li>
+          <li>検索</li>
+          <li>カテゴリ</li>
+          <li>DB保存</li>
+          <li>デプロイ</li>
+        </ul>
+
+        <p>
+          作るときは、最初から完璧を目指さなくて大丈夫です。
+        </p>
+
+        <p>
+          まずは以下の状態を目指しましょう。
+        </p>
+
+        <ul>
+          <li>ログインできる</li>
+          <li>投稿できる</li>
+          <li>一覧表示できる</li>
+          <li>編集・削除できる</li>
+          <li>公開できる</li>
+        </ul>
+
+        <h2>STEP5：GitHubとREADMEを整える</h2>
+
+        <p>
+          ポートフォリオが完成したら、GitHubを整えます。
+        </p>
+
+        <p>
+          READMEには以下を書きましょう。
+        </p>
+
+        <ul>
+          <li>概要</li>
+          <li>作成背景</li>
+          <li>使用技術</li>
+          <li>機能一覧</li>
+          <li>URL</li>
+          <li>画面イメージ</li>
+          <li>工夫した点</li>
+          <li>苦労した点</li>
+          <li>今後の改善</li>
+          <li>環境構築手順</li>
+        </ul>
+
+        <p>
+          ここをしっかり書くと、面接でかなり話しやすくなります。
+        </p>
+
+        <h2>STEP6：職務経歴書・自己PRを作る</h2>
+
+        <p>
+          未経験の場合は、ポートフォリオ中心に書きます。
+          実務浅めの場合は、現場経験も必ず書きましょう。
+        </p>
+
+        <p>
+          実務浅めの人がアピールしやすいのは以下です。
+        </p>
+
+        <ul>
+          <li>既存コードを読んだ経験</li>
+          <li>バグ修正経験</li>
+          <li>レビュー対応経験</li>
+          <li>Gitを使った経験</li>
+          <li>チーム開発経験</li>
+          <li>仕様を理解して実装した経験</li>
+        </ul>
+
+        <p>
+          たとえ経験が浅くても、実務経験は大きな材料になります。
+        </p>
+
+        <h2>STEP7：応募する</h2>
+
+        <p>
+          準備が完璧になるまで応募しない人がいますが、それはもったいないです。
+        </p>
+
+        <p>
+          最低限、以下が揃ったら応募を始めて良いです。
+        </p>
+
+        <ul>
+          <li>ポートフォリオURL</li>
+          <li>GitHub</li>
+          <li>README</li>
+          <li>職務経歴書</li>
+          <li>自己PR</li>
+          <li>面接で話す内容</li>
+        </ul>
+
+        <p>
+          応募先は、自社開発だけに絞りすぎない方が良いです。
+        </p>
+
+        <p>
+          選択肢としては、以下があります。
+        </p>
+
+        <ul>
+          <li>自社開発企業</li>
+          <li>受託開発企業</li>
+          <li>Web系SES</li>
+          <li>スタートアップ</li>
+          <li>事業会社のWeb開発</li>
+        </ul>
+
+        <p>
+          最初の目的は、理想の会社に一発で入ることではなく、
+          <strong>Web開発経験を積める環境に入ること</strong>
+          です。
+        </p>
+
+        <h2>STEP8：面接対策をする</h2>
+
+        <p>
+          面接では、以下を聞かれやすいです。
+        </p>
+
+        <ul>
+          <li>なぜWeb系に転職したいのですか？</li>
+          <li>なぜこのポートフォリオを作ったのですか？</li>
+          <li>なぜその技術を選んだのですか？</li>
+          <li>実装で苦労した点は？</li>
+          <li>エラーをどう解決しましたか？</li>
+          <li>セキュリティで意識したことは？</li>
+          <li>今後改善したい点は？</li>
+        </ul>
+
+        <p>
+          特に大事なのは、
+          <strong>ポートフォリオを自分の言葉で説明できること</strong>
+          です。
+        </p>
+
+        <h2>まとめ</h2>
+
+        <p>
+          未経験・実務浅めからWeb系に転職する流れは以下です。
+        </p>
+
+        <ul>
+          <li>基礎学習</li>
+          <li>React / TypeScript</li>
+          <li>API / DB</li>
+          <li>ポートフォリオ作成</li>
+          <li>デプロイ</li>
+          <li>GitHub・README整理</li>
+          <li>職務経歴書作成</li>
+          <li>応募</li>
+          <li>面接対策</li>
+        </ul>
+
+        <p>
+          大事なのは、勉強だけで止まらないことです。
+        </p>
+
+        <p>
+          Web系転職では、以下が重要です。
+        </p>
+
+        <ul>
+          <li>作ったものを見せること</li>
+          <li>なぜ作ったか説明すること</li>
+          <li>改善点まで話せること</li>
+        </ul>
+
+        <p>
+          完璧を目指しすぎず、まずは1つ完成させる。
+          そこから改善していくことが、Web系転職への一番現実的な近道です。
+        </p>
+      </div>
+    </article>
+
+    <CTABox />
+  </main>
+</BaseLayout>

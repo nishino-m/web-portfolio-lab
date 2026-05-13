@@ -1,0 +1,131 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleJsonLd from "../../components/ArticleJsonLd.astro";
+import CTABox from "../../components/CTABox.astro";
+import { getArticleBySlug } from "../../data/articles";
+
+const article = getArticleBySlug("no-portfolio-hard");
+
+if (!article) {
+  throw new Error("Article not found: no-portfolio-hard");
+}
+---
+
+<BaseLayout
+  title={`${article.title} | Web系IT転職指南所`}
+  description={article.description}
+  path={article.href}
+  type="article"
+  image={article.image}
+>
+  <ArticleJsonLd article={article} />
+
+  <main id="main-content">
+    <article class="article-page">
+      <a class="breadcrumb" href="/articles">← 記事一覧へ戻る</a>
+
+      <header class="article-header">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          {article.tag}
+        </span>
+
+        <h1>{article.title}</h1>
+
+        <div class="article-meta">
+          <span>公開日：2026年5月10日</span>
+          <span>更新日：2026年5月10日</span>
+          <span>{article.readingTime}</span>
+        </div>
+      </header>
+
+      <div class="article-body card">
+        <p>
+          未経験からエンジニア転職を目指すとき、
+          <strong>ポートフォリオなしで勝負するのはかなり厳しい</strong>
+          です。
+        </p>
+
+        <p>
+          理由はシンプルで、採用側から見ると「本当に自分で作れるのか」が判断しづらいからです。
+          学習歴や資格だけでは、実装力・設計力・エラー対応力までは見えません。
+        </p>
+
+        <h2>ポートフォリオなしが厳しい理由</h2>
+
+        <p>
+          未経験・実務浅めの場合、職務経歴書だけではアピール材料が不足しがちです。
+          特にWeb系企業を目指すなら、画面、API、DB、認証、デプロイまで含めた成果物があると、
+          自分の理解度を具体的に示しやすくなります。
+        </p>
+
+        <ul>
+          <li>何を作れるのかが伝わりにくい</li>
+          <li>GitHubでコードを確認してもらえない</li>
+          <li>READMEや設計意図を見せられない</li>
+          <li>面接で実装経験を具体的に話しづらい</li>
+          <li>他の応募者との差別化が難しい</li>
+        </ul>
+
+        <h2>Todoアプリだけでは弱く見えやすい</h2>
+
+        <p>
+          Todoアプリ自体が悪いわけではありません。
+          ただし、転職用ポートフォリオとしては、実務で必要になる要素が見えにくいことがあります。
+        </p>
+
+        <p>
+          たとえば、ログイン、権限管理、DB設計、バリデーション、エラーハンドリング、デプロイ、
+          READMEまで整っていると、単なる学習アプリではなく
+          <strong>「実務を意識して作った成果物」</strong>
+          として伝えやすくなります。
+        </p>
+
+        <h2>入れるべき機能</h2>
+
+        <p>
+          最初から大規模なサービスを作る必要はありません。
+          まずは、実務でよく使う基本要素を一通り含めることが重要です。
+        </p>
+
+        <ul>
+          <li>ログイン / ログアウト</li>
+          <li>投稿やタスクのCRUD</li>
+          <li>DB設計</li>
+          <li>入力バリデーション</li>
+          <li>管理者権限</li>
+          <li>エラーハンドリング</li>
+          <li>Dockerでの開発環境</li>
+          <li>デプロイ</li>
+          <li>README</li>
+        </ul>
+
+        <h2>おすすめは投稿アプリ・掲示板アプリ</h2>
+
+        <p>
+          最初に作るなら、投稿アプリや掲示板アプリがちょうどいいです。
+          ログイン、投稿作成、一覧表示、カテゴリ、削除、管理者機能を自然に入れやすいからです。
+        </p>
+
+        <p>
+          さらに、READMEで「なぜこの構成にしたのか」「どこを工夫したのか」を書けば、
+          面接でも説明しやすくなります。
+        </p>
+
+        <h2>まとめ</h2>
+
+        <p>
+          未経験エンジニア転職では、ポートフォリオは単なる作品ではなく、
+          <strong>自分の実装力を証明する資料</strong>
+          になります。
+        </p>
+
+        <p>
+          まずは小さくてもいいので、ログイン、CRUD、DB、READMEまで含めたWebアプリを作るところから始めましょう。
+        </p>
+      </div>
+    </article>
+
+    <CTABox />
+  </main>
+</BaseLayout>

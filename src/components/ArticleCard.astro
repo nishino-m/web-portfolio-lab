@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  tag: string;
+  readingTime?: string;
+}
+
+const { title, description, href, tag, readingTime } = Astro.props;
+---
+
+<a class="article-card card" href={href}>
+  <div class="article-card-head">
+    <span class="article-tag">{tag}</span>
+    {readingTime && <span class="article-time">{readingTime}</span>}
+  </div>
+
+  <h3>{title}</h3>
+  <p>{description}</p>
+
+  <span class="article-link">記事を読む →</span>
+</a>

@@ -1,0 +1,323 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleJsonLd from "../../components/ArticleJsonLd.astro";
+import CTABox from "../../components/CTABox.astro";
+import { getArticleBySlug } from "../../data/articles";
+
+const article = getArticleBySlug("portfolio-ideas");
+
+if (!article) {
+  throw new Error("Article not found: portfolio-ideas");
+}
+---
+
+<BaseLayout
+  title={`${article.title} | Web転職ポートフォリオ研究所`}
+  description={article.description}
+  path={article.href}
+  type="article"
+  image={article.image}
+>
+  <ArticleJsonLd article={article} />
+
+  <main id="main-content">
+    <article class="article-page">
+      <a class="breadcrumb" href="/articles">← 記事一覧へ戻る</a>
+
+      <header class="article-header">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          {article.tag}
+        </span>
+
+        <h1>{article.title}</h1>
+
+        <div class="article-meta">
+          <span>公開日：2026年5月12日</span>
+          <span>更新日：2026年5月12日</span>
+          <span>{article.readingTime}</span>
+        </div>
+      </header>
+
+      <div class="article-body card">
+        <p>
+          ポートフォリオを作るとき、多くの人が悩むのが、
+          <strong>結局、何を作ればいいのか</strong>
+          という部分です。
+        </p>
+
+        <p>
+          Todoアプリだけでは弱い。  
+          でも、難しすぎるアプリを作ろうとすると完成しない。
+        </p>
+
+        <p>
+          そこでおすすめなのが、
+          <strong>実務でよく使う機能が入っていて、かつ作り切れるアプリ</strong>
+          です。
+        </p>
+
+        <p>
+          この記事では、未経験・実務浅め向けにおすすめのポートフォリオ案を5つ紹介します。
+        </p>
+
+        <h2>1. 学習記録アプリ</h2>
+
+        <h3>概要</h3>
+
+        <p>
+          プログラミング学習の記録を投稿できるアプリです。
+        </p>
+
+        <h3>主な機能</h3>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>学習記録投稿</li>
+          <li>投稿一覧</li>
+          <li>投稿編集</li>
+          <li>投稿削除</li>
+          <li>カテゴリ検索</li>
+          <li>キーワード検索</li>
+        </ul>
+
+        <h3>評価されやすい理由</h3>
+
+        <p>
+          学習記録アプリは、未経験者との相性が良いです。
+          なぜなら、自分自身の課題から作成理由を説明しやすいからです。
+        </p>
+
+        <p>
+          面接でも、
+          「自分自身が学習の継続に課題を感じたため、学習内容を記録できるアプリを作りました」
+          と説明できます。
+        </p>
+
+        <h2>2. 掲示板アプリ</h2>
+
+        <h3>概要</h3>
+
+        <p>
+          ユーザーがスレッドを作成し、コメントを投稿できるアプリです。
+        </p>
+
+        <h3>主な機能</h3>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>スレッド作成</li>
+          <li>コメント投稿</li>
+          <li>コメント削除</li>
+          <li>カテゴリ機能</li>
+          <li>検索機能</li>
+          <li>管理者削除</li>
+        </ul>
+
+        <h3>評価されやすい理由</h3>
+
+        <p>
+          掲示板アプリは、Webアプリの基本要素がかなり詰まっています。
+        </p>
+
+        <ul>
+          <li>ユーザー管理</li>
+          <li>投稿管理</li>
+          <li>コメント管理</li>
+          <li>権限制御</li>
+          <li>DB設計</li>
+        </ul>
+
+        <p>
+          このあたりを説明できると、実務に近い印象を与えやすいです。
+        </p>
+
+        <h2>3. レビュー投稿アプリ</h2>
+
+        <h3>概要</h3>
+
+        <p>
+          商品やサービスに対してレビューを投稿できるアプリです。
+        </p>
+
+        <h3>主な機能</h3>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>レビュー投稿</li>
+          <li>星評価</li>
+          <li>レビュー編集</li>
+          <li>レビュー削除</li>
+          <li>検索</li>
+          <li>カテゴリ</li>
+          <li>並び替え</li>
+        </ul>
+
+        <h3>評価されやすい理由</h3>
+
+        <p>
+          レビュー投稿アプリは、実際のWebサービスに近いです。
+        </p>
+
+        <p>
+          星評価や並び替えを入れると、少し実務っぽさが増します。
+        </p>
+
+        <p>
+          面接では、以下のような点を話せると良いです。
+        </p>
+
+        <ul>
+          <li>レビューの平均評価をどのように計算したか</li>
+          <li>並び替え処理をどこで実装したか</li>
+          <li>不正な投稿をどう防ぐか</li>
+        </ul>
+
+        <h2>4. 予約管理アプリ</h2>
+
+        <h3>概要</h3>
+
+        <p>
+          店舗やサービスの予約を管理できるアプリです。
+        </p>
+
+        <h3>主な機能</h3>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>予約作成</li>
+          <li>予約一覧</li>
+          <li>予約キャンセル</li>
+          <li>日時選択</li>
+          <li>管理者画面</li>
+          <li>予約状況確認</li>
+        </ul>
+
+        <h3>評価されやすい理由</h3>
+
+        <p>
+          予約管理アプリは、業務システムに近いです。
+        </p>
+
+        <p>
+          特に、日時管理や重複チェックを入れると評価されやすいです。
+        </p>
+
+        <p>
+          たとえば、
+          「同じ時間帯に複数の予約が入らないように制御しました」
+          と言えると、かなり実務っぽくなります。
+        </p>
+
+        <h2>5. ポートフォリオ投稿サービス</h2>
+
+        <h3>概要</h3>
+
+        <p>
+          未経験エンジニアが自分のポートフォリオを投稿できるサービスです。
+        </p>
+
+        <h3>主な機能</h3>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>ポートフォリオ投稿</li>
+          <li>技術タグ</li>
+          <li>検索</li>
+          <li>詳細ページ</li>
+          <li>いいね</li>
+          <li>ブックマーク</li>
+          <li>コメント</li>
+        </ul>
+
+        <h3>評価されやすい理由</h3>
+
+        <p>
+          テーマ自体が転職活動とつながっているため、作成理由を説明しやすいです。
+        </p>
+
+        <p>
+          また、技術タグや検索機能を入れることで、Webサービスらしさも出せます。
+        </p>
+
+        <h2>おすすめの技術構成</h2>
+
+        <p>
+          まずは以下で十分です。
+        </p>
+
+        <ul>
+          <li>フロントエンド：React / TypeScript</li>
+          <li>バックエンド：Node.js / Express</li>
+          <li>DB：PostgreSQL</li>
+          <li>ORM：Prisma</li>
+          <li>スタイリング：Tailwind CSS</li>
+          <li>デプロイ：Vercel / Railway</li>
+        </ul>
+
+        <p>
+          より簡単に作りたい場合は、以下の構成でも良いです。
+        </p>
+
+        <ul>
+          <li>Next.js</li>
+          <li>TypeScript</li>
+          <li>Supabase</li>
+          <li>Vercel</li>
+        </ul>
+
+        <h2>どれを選ぶべきか</h2>
+
+        <p>
+          迷ったら、以下を基準に選ぶと良いです。
+        </p>
+
+        <ul>
+          <li>一番作りやすい：学習記録アプリ</li>
+          <li>一番実務っぽい：予約管理アプリ</li>
+          <li>一番Webサービスっぽい：レビュー投稿アプリ</li>
+          <li>一番面接で話しやすい：掲示板アプリ</li>
+          <li>一番転職テーマと相性が良い：ポートフォリオ投稿サービス</li>
+        </ul>
+
+        <p>
+          最初から大きく作りすぎる必要はありません。
+          まずは小さく作って、後から機能追加する方が現実的です。
+        </p>
+
+        <h2>まとめ</h2>
+
+        <p>
+          未経験・実務浅めのポートフォリオでは、
+          <strong>作り切れること</strong>
+          がかなり重要です。
+        </p>
+
+        <p>
+          おすすめは以下です。
+        </p>
+
+        <ul>
+          <li>学習記録アプリ</li>
+          <li>掲示板アプリ</li>
+          <li>レビュー投稿アプリ</li>
+          <li>予約管理アプリ</li>
+          <li>ポートフォリオ投稿サービス</li>
+        </ul>
+
+        <p>
+          どのアプリでも大事なのは、
+          <strong>なぜ作ったのか、どこを工夫したのか、どう改善できるのか</strong>
+          を説明できることです。
+        </p>
+      </div>
+    </article>
+
+    <CTABox />
+  </main>
+</BaseLayout>

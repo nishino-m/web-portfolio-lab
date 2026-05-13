@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import CTABox from "../components/CTABox.astro";
+import { featuredArticles } from "../data/articles";
+---
+
+<BaseLayout
+  title="未経験エンジニア転職、ポートフォリオなしは厳しい | Web系IT転職指南所"
+  description="未経験・実務浅めからWeb系エンジニア転職を目指す人向けに、ポートフォリオの必要性、作るべき機能、README、GitHub、Next.js構成を解説します。"
+  path="/"
+>
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge">
+            <span class="badge-dot"></span>
+            未経験・実務浅めエンジニア向け
+          </span>
+
+          <h1>未経験エンジニア転職、<wbr />ポートフォリオなしは厳しい</h1>
+
+          <div class="hero-lead">
+            <p>
+              タイトルで不安にさせていたらすみません。ですが、必要なことを順番に押さえれば大丈夫です。
+            </p>
+            <p>
+              このサイトでは、未経験・実務浅めの方向けに「転職で評価されやすい準備」を整理しています。
+              ただ「勉強しました」だけでは実装力が伝わりにくいので、成果物で証明できる状態を目指します。
+            </p>
+            <ul class="hero-lead-list">
+              <li>資格（基礎理解の証明）</li>
+              <li>ポートフォリオ（実装力の証明）</li>
+            </ul>
+            <p>
+              React / Next.js / Docker / DB を使って、GitHub・README・面接で説明できる形に整える方法をまとめます。
+            </p>
+          </div>
+
+          <div class="hero-about" aria-label="自己紹介">
+            <span class="hero-about-label">自己紹介</span>
+            <p class="hero-about-text">
+              私も文系かつ工場(ウルトラブラック)で4年勤務を経て、ITの世界に飛び込み開発や設計を幅広く携わっています。
+			  某メガベンチャーで3年開発経験を積ませていただき、今は様々な案件を飛び回り知見を深めている真っ最中です。
+			  その中で採用担当の方とお話しする機会があったので今回紹介しようと思いました。
+            </p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/articles/no-portfolio-hard">最初の記事を読む</a>
+            <a class="btn btn-secondary" href="#starter-kit">スターターキットを見る</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel card" aria-label="このサイトで扱うこと">
+          <h2 class="hero-panel-title">このサイトで扱うこと</h2>
+
+          <ul class="check-list">
+            <li>未経験・実務浅め向けのポートフォリオ戦略</li>
+            <li>Next.js / Prisma / MySQL の構成</li>
+            <li>Dockerで動く開発環境</li>
+            <li>GitHubとREADMEの整え方</li>
+            <li>面接で説明しやすい実装ポイント</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">まず読む記事</h2>
+            <p class="section-description">
+              未経験・実務浅めからWeb系転職を目指す人向けに、ポートフォリオの必要性から順番に整理します。
+            </p>
+          </div>
+
+          <a class="btn btn-secondary" href="/articles">すべて見る</a>
+        </div>
+
+        <div class="article-grid">
+          {
+            featuredArticles.map((article) => (
+              <ArticleCard
+                title={article.title}
+                description={article.description}
+                href={article.href}
+                tag={article.tag}
+                readingTime={article.readingTime}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container two-column">
+        <div>
+          <span class="badge">
+            <span class="badge-dot"></span>
+            Why Portfolio?
+          </span>
+          <h2 class="section-title">ポートフォリオは、実装力の証拠になる</h2>
+        </div>
+
+        <div class="text-block">
+          <p>
+            未経験・実務浅めの場合、職務経歴書だけでは「どこまで自分で作れるのか」が伝わりにくいです。
+            だからこそ、ログイン、CRUD、DB、バリデーション、READMEまで含めた成果物を用意する価値があります。
+          </p>
+          <p>
+            このサイトでは、ただアプリを作るだけでなく、採用側に伝わる見せ方まで整理していきます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <CTABox />
+  </main>
+</BaseLayout>

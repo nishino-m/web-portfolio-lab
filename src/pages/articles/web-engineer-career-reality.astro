@@ -1,0 +1,227 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleJsonLd from "../../components/ArticleJsonLd.astro";
+import CTABox from "../../components/CTABox.astro";
+import { getArticleBySlug } from "../../data/articles";
+
+const article = getArticleBySlug("web-engineer-career-reality");
+
+if (!article) {
+  throw new Error("Article not found: web-engineer-career-reality");
+}
+---
+
+<BaseLayout
+  title={`${article.title} | Web転職ポートフォリオ研究所`}
+  description={article.description}
+  path={article.href}
+  type="article"
+  image={article.image}
+>
+  <ArticleJsonLd article={article} />
+
+  <main id="main-content">
+    <article class="article-page">
+      <a class="breadcrumb" href="/articles">← 記事一覧へ戻る</a>
+
+      <header class="article-header">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          {article.tag}
+        </span>
+
+        <h1>{article.title}</h1>
+
+        <div class="article-meta">
+          <span>公開日：2026年5月12日</span>
+          <span>更新日：2026年5月12日</span>
+          <span>{article.readingTime}</span>
+        </div>
+      </header>
+
+      <div class="article-body card">
+        <p>
+          未経験からWeb系エンジニアを目指したい。
+          実務経験はあるけど、まだ経験が浅くてWeb系に転職できるか不安。
+        </p>
+
+        <p>
+          こう感じている人はかなり多いと思います。
+        </p>
+
+        <p>
+          結論から言うと、
+          <strong>未経験・実務浅めでもWeb系エンジニアを目指すことは可能</strong>
+          です。
+        </p>
+
+        <p>
+          ただし、「プログラミングを勉強しました」だけではかなり弱いです。
+        </p>
+
+        <p>
+          Web系企業に評価されるためには、学習した内容をもとに、実際にWebアプリを作り、公開し、
+          なぜそのアプリを作ったのか説明できる状態にしておく必要があります。
+        </p>
+
+        <h2>Web系エンジニアとは</h2>
+
+        <p>
+          Web系エンジニアとは、WebサービスやWebアプリケーションを開発するエンジニアのことです。
+        </p>
+
+        <p>たとえば、以下のようなサービスを作ります。</p>
+
+        <ul>
+          <li>SNS</li>
+          <li>予約サービス</li>
+          <li>ECサイト</li>
+          <li>マッチングサービス</li>
+          <li>学習管理サービス</li>
+          <li>掲示板サービス</li>
+          <li>業務管理システム</li>
+        </ul>
+
+        <p>職種としては、主に以下のように分かれます。</p>
+
+        <ul>
+          <li>フロントエンドエンジニア</li>
+          <li>バックエンドエンジニア</li>
+          <li>Webアプリケーションエンジニア</li>
+          <li>フルスタックエンジニア</li>
+        </ul>
+
+        <p>
+          未経験・実務浅めの場合は、まずはフロントエンド寄りから入る人も多いです。
+        </p>
+
+        <p>
+          ただし、最近はフロントエンドだけでなく、
+          <strong>APIやデータベースの理解も求められやすくなっています。</strong>
+        </p>
+
+        <h2>未経験・実務浅めの転職が厳しい理由</h2>
+
+        <p>
+          未経験歓迎の求人はあります。
+          しかし、人気が高いため応募者も多いです。
+        </p>
+
+        <p>
+          そのため、ただ「勉強しています」と言うだけでは、他の応募者との差別化が難しくなります。
+        </p>
+
+        <p>特に厳しい理由は以下です。</p>
+
+        <ul>
+          <li>実務経験者と比較される</li>
+          <li>自走力を見られる</li>
+          <li>ポートフォリオの質で差がつく</li>
+          <li>GitHubやREADMEを見られる</li>
+          <li>面接で技術説明ができるか確認される</li>
+        </ul>
+
+        <p>
+          つまり、Web系転職では、何を学んだかだけでなく、
+          <strong>何を作ったか、どう考えて作ったか</strong>
+          が重要になります。
+        </p>
+
+        <h2>必要なスキル</h2>
+
+        <p>最低限、以下は押さえておきたいです。</p>
+
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>TypeScript</li>
+          <li>Git / GitHub</li>
+          <li>API通信</li>
+          <li>データベース</li>
+          <li>認証</li>
+          <li>デプロイ</li>
+        </ul>
+
+        <p>特におすすめなのは、以下のような構成です。</p>
+
+        <ul>
+          <li>React</li>
+          <li>TypeScript</li>
+          <li>Node.js</li>
+          <li>Prisma</li>
+          <li>PostgreSQL または MySQL</li>
+          <li>Vercel</li>
+          <li>Railway</li>
+        </ul>
+
+        <p>
+          すべて完璧にできる必要はありません。
+          ただし、<strong>1つのWebアプリを最後まで作る経験</strong>
+          はかなり大事です。
+        </p>
+
+        <h2>まず作るべきもの</h2>
+
+        <p>
+          未経験・実務浅めの人が作るなら、
+          <strong>ログイン機能付きの投稿系アプリ</strong>
+          がおすすめです。
+        </p>
+
+        <p>
+          理由は、実務でよく使う要素が多く含まれているからです。
+        </p>
+
+        <p>たとえば、以下のような機能です。</p>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>投稿</li>
+          <li>編集</li>
+          <li>削除</li>
+          <li>検索</li>
+          <li>カテゴリ</li>
+          <li>バリデーション</li>
+          <li>DB保存</li>
+          <li>デプロイ</li>
+        </ul>
+
+        <p>
+          このあたりを実装できると、面接でも話しやすくなります。
+        </p>
+
+        <h2>まとめ</h2>
+
+        <p>
+          未経験・実務浅めからWeb系に転職するには、ただ勉強するだけでは足りません。
+        </p>
+
+        <p>大事なのは、以下の流れです。</p>
+
+        <ul>
+          <li>学習する</li>
+          <li>Webアプリを作る</li>
+          <li>公開する</li>
+          <li>GitHubを整える</li>
+          <li>READMEを書く</li>
+          <li>面接で説明できるようにする</li>
+        </ul>
+
+        <p>
+          完璧なアプリである必要はありません。
+          ただし、実務を意識して作ったことが伝わるポートフォリオは必要です。
+        </p>
+
+        <p>
+          次の記事では、Web系転職を目指す人向けに、
+          ポートフォリオ作成前に確認すべきチェックリストを紹介します。
+        </p>
+      </div>
+    </article>
+
+    <CTABox />
+  </main>
+</BaseLayout>

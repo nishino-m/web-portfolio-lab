@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { articles } from "../../data/articles";
+---
+
+<BaseLayout
+  title="記事一覧 | Web系IT転職指南所"
+  description="未経験・実務浅めからWeb系エンジニア転職を目指す人向けに、ポートフォリオ設計・README・GitHub・Next.js構成の記事をまとめています。"
+  path="/articles"
+>
+  <main id="main-content" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="badge">
+            <span class="badge-dot"></span>
+            Articles
+          </span>
+
+          <h1 class="section-title">記事一覧</h1>
+
+          <p class="section-description">
+            未経験・実務浅めエンジニアが、Web系転職に向けてポートフォリオを作るための記事をまとめています。
+          </p>
+        </div>
+      </div>
+
+      <div class="article-grid">
+        {
+          articles.map((article) => (
+            <ArticleCard
+              title={article.title}
+              description={article.description}
+              href={article.href}
+              tag={article.tag}
+              readingTime={article.readingTime}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</BaseLayout>
