@@ -1,20 +1,60 @@
+---
+import { products } from "../data/products";
+---
+
 <section id="starter-kit" class="container">
   <div class="cta-box">
     <span class="badge badge-light">
       <span class="badge-dot"></span>
-      BOOTHで公開予定
+      BOOTHで販売中
     </span>
 
-    <h2>転職用ポートフォリオ・スターターキットを準備中</h2>
+    <h2>ポートフォリオ制作の土台に使えるNext.jsテンプレート</h2>
 
     <p>
-      Next.js / Prisma / MySQL / Docker を使った、認証付きポートフォリオの土台を作成中です。
-      ログイン、投稿CRUD、DB接続、READMEテンプレ、エラー対策集まで含める予定です。
+      Web系転職に向けて「何を作ればいいかわからない」「まず動くコードを触りたい」という方向けに、
+      Next.js / TypeScript / Prisma を使った学習・転職準備アプリテンプレートを用意しています。
     </p>
 
-    <div class="btn-row">
-      <a class="btn btn-primary btn-white" href="/articles/no-portfolio-hard">まず記事を読む</a>
-      <a class="btn btn-secondary btn-ghost" href="/articles">記事一覧を見る</a>
+    <div class="product-grid">
+      {
+        products.map((product) => (
+          <article class="product-card">
+            <div class="product-card-head">
+              <span class="product-badge">{product.badge}</span>
+              <span class="product-price">{product.price}</span>
+            </div>
+
+            <h3>{product.title}</h3>
+
+            <p class="product-description">
+              {product.description}
+            </p>
+
+            <ul class="product-feature-list">
+              {product.features.map((feature) => <li>{feature}</li>)}
+            </ul>
+
+            <p class="product-recommend">
+              {product.recommendedFor}
+            </p>
+
+            <a
+              class="btn btn-primary btn-white product-link"
+              href={product.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              BOOTHで詳細を見る
+            </a>
+          </article>
+        ))
+      }
     </div>
+
+    <p class="product-note">
+      ※本商品は学習用テンプレートです。転職成功・採用・案件獲得を保証するものではありません。
+      内容を理解し、自分用にカスタマイズしながら活用することをおすすめします。
+    </p>
   </div>
 </section>
