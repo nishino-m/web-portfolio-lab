@@ -1,0 +1,299 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleJsonLd from "../../components/ArticleJsonLd.astro";
+import CTABox from "../../components/CTABox.astro";
+import { getArticleBySlug } from "../../data/articles";
+
+const article = getArticleBySlug("portfolio-checklist");
+
+if (!article) {
+  throw new Error("Article not found: portfolio-checklist");
+}
+---
+
+<BaseLayout
+  title={`${article.title} | Web転職ポートフォリオ研究所`}
+  description={article.description}
+  path={article.href}
+  type="article"
+  image={article.image}
+>
+  <ArticleJsonLd article={article} />
+
+  <main id="main-content">
+    <article class="article-page">
+      <a class="breadcrumb" href="/articles">← 記事一覧へ戻る</a>
+
+      <header class="article-header">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          {article.tag}
+        </span>
+
+        <h1>{article.title}</h1>
+
+        <div class="article-meta">
+          <span>公開日：2026年5月12日</span>
+          <span>更新日：2026年5月12日</span>
+          <span>{article.readingTime}</span>
+        </div>
+      </header>
+
+      <div class="article-body card">
+        <p>
+          Web系エンジニアを目指すなら、
+          <strong>ポートフォリオはかなり重要</strong>
+          です。
+        </p>
+
+        <p>
+          しかし、よくある失敗があります。
+        </p>
+
+        <p>
+          それは、
+          <strong>とりあえず何か作れば評価されると思ってしまうこと</strong>
+          です。
+        </p>
+
+        <p>
+          実際には、ただ作っただけのアプリでは評価されにくいです。
+          大事なのは、採用担当者やエンジニア面接官が見たときに、
+          「この人は実務を意識して作っているな」と感じられることです。
+        </p>
+
+        <p>
+          この記事では、ポートフォリオを作る前に確認すべきチェック項目をまとめます。
+        </p>
+
+        <h2>1. アプリの目的が明確か</h2>
+
+        <p>
+          まず確認すべきなのは、アプリの目的です。
+        </p>
+
+        <p>
+          以下の質問に答えられるでしょうか。
+        </p>
+
+        <ul>
+          <li>誰のためのアプリか？</li>
+          <li>どんな課題を解決するのか？</li>
+          <li>なぜそのアプリを作ったのか？</li>
+        </ul>
+
+        <p>
+          たとえば、単に「掲示板アプリを作りました」だと弱いです。
+        </p>
+
+        <p>
+          それよりも、
+          <strong>
+            未経験エンジニアが学習記録を投稿し、他の人の学習内容を参考にできるサービスを作りました。
+          </strong>
+          のように言える方が強いです。
+        </p>
+
+        <h2>2. 基本機能が入っているか</h2>
+
+        <p>
+          ポートフォリオには、最低限以下のような機能があると良いです。
+        </p>
+
+        <ul>
+          <li>ユーザー登録</li>
+          <li>ログイン</li>
+          <li>投稿作成</li>
+          <li>投稿一覧</li>
+          <li>投稿詳細</li>
+          <li>編集</li>
+          <li>削除</li>
+          <li>検索</li>
+          <li>バリデーション</li>
+          <li>レスポンシブ対応</li>
+        </ul>
+
+        <p>
+          全部入れられなくても問題ありません。
+          ただし、<strong>CRUD処理はかなり重要</strong>です。
+        </p>
+
+        <p>
+          CRUDとは、以下の4つの操作のことです。
+        </p>
+
+        <ul>
+          <li>Create：作成</li>
+          <li>Read：表示</li>
+          <li>Update：更新</li>
+          <li>Delete：削除</li>
+        </ul>
+
+        <p>
+          Webアプリの基本なので、できれば入れておきたいです。
+        </p>
+
+        <h2>3. データベースを使っているか</h2>
+
+        <p>
+          ポートフォリオでは、データを保存できることも重要です。
+        </p>
+
+        <p>
+          フロントだけのアプリでも悪くはありませんが、Web系転職を目指すなら、
+          <strong>DBを使ったアプリの方が評価されやすい</strong>
+          です。
+        </p>
+
+        <p>
+          たとえば、以下のようなデータをDBに保存します。
+        </p>
+
+        <ul>
+          <li>ユーザー情報</li>
+          <li>投稿内容</li>
+          <li>カテゴリ</li>
+          <li>コメント</li>
+          <li>いいね</li>
+        </ul>
+
+        <p>
+          おすすめは、PostgreSQLやMySQLです。
+          PrismaなどのORMを使うと、DB操作も整理しやすくなります。
+        </p>
+
+        <h2>4. デプロイしているか</h2>
+
+        <p>
+          ポートフォリオは、ローカルで動くだけでは弱いです。
+        </p>
+
+        <p>
+          できれば、誰でも見られるように公開しましょう。
+        </p>
+
+        <p>
+          おすすめは以下です。
+        </p>
+
+        <ul>
+          <li>Vercel</li>
+          <li>Railway</li>
+          <li>Supabase</li>
+          <li>Render</li>
+          <li>Netlify</li>
+        </ul>
+
+        <p>
+          面接官がURLを開いてすぐ見られる状態にしておくと、かなり印象が良くなります。
+        </p>
+
+        <h2>5. GitHubが整理されているか</h2>
+
+        <p>
+          GitHubも見られる可能性があります。
+        </p>
+
+        <p>
+          以下を確認しましょう。
+        </p>
+
+        <ul>
+          <li>不要なファイルが入っていない</li>
+          <li>READMEがある</li>
+          <li>コミット履歴がある</li>
+          <li>環境変数を公開していない</li>
+          <li>ディレクトリ構成がわかりやすい</li>
+          <li>コードが最低限整理されている</li>
+        </ul>
+
+        <p>
+          特に、<code>.env</code> をそのまま公開するのは危険です。
+          APIキーやDB接続情報は絶対に載せないようにしましょう。
+        </p>
+
+        <h2>6. READMEを書いているか</h2>
+
+        <p>
+          READMEはかなり大事です。
+        </p>
+
+        <p>
+          最低限、以下を書きましょう。
+        </p>
+
+        <ul>
+          <li>アプリ概要</li>
+          <li>作成背景</li>
+          <li>使用技術</li>
+          <li>機能一覧</li>
+          <li>URL</li>
+          <li>画面イメージ</li>
+          <li>工夫した点</li>
+          <li>苦労した点</li>
+          <li>今後の改善</li>
+          <li>環境構築手順</li>
+        </ul>
+
+        <p>
+          READMEがあるだけで、
+          <strong>「ちゃんと説明する意識がある人」</strong>
+          として見られやすくなります。
+        </p>
+
+        <h2>7. 面接で説明できるか</h2>
+
+        <p>
+          最後に一番大事なのが、説明できるかどうかです。
+        </p>
+
+        <p>
+          以下の質問に答えられるようにしましょう。
+        </p>
+
+        <ul>
+          <li>なぜこのアプリを作ったのですか？</li>
+          <li>なぜその技術を選んだのですか？</li>
+          <li>一番苦労した実装はどこですか？</li>
+          <li>セキュリティ面で意識したことはありますか？</li>
+          <li>今後改善するとしたら何をしますか？</li>
+        </ul>
+
+        <p>
+          作っただけで終わるのではなく、
+          <strong>自分の言葉で説明できる状態にすること</strong>
+          が重要です。
+        </p>
+
+        <h2>まとめ</h2>
+
+        <p>
+          ポートフォリオ作成前に確認すべきことは以下です。
+        </p>
+
+        <ul>
+          <li>目的が明確か</li>
+          <li>基本機能があるか</li>
+          <li>DBを使っているか</li>
+          <li>デプロイしているか</li>
+          <li>GitHubが整理されているか</li>
+          <li>READMEを書いているか</li>
+          <li>面接で説明できるか</li>
+        </ul>
+
+        <p>
+          ポートフォリオは、ただの作品ではありません。
+          転職活動では、
+          <strong>自分の実装力と思考力を見せる資料</strong>
+          になります。
+        </p>
+
+        <p>
+          次の記事では、実際に評価されやすいポートフォリオの作り方を、より具体的に解説します。
+        </p>
+      </div>
+    </article>
+
+    <CTABox />
+  </main>
+</BaseLayout>
